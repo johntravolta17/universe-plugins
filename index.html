@@ -1,0 +1,1425 @@
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="utf-8" http-equiv="encoding" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel+Decorative" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Black+Ops+One" />
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <!-- <script src="nui://game/ui/jquery.js" type="text/javascript"></script> -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap.min.css" />
+    <script src="assets/vendor/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="assets/styles/reset.css" type="text/css" />
+    <link rel="stylesheet" href="assets/styles/styles.css" type="text/css" />
+</head>
+
+<body>
+    <div class="main-container" style="display: none">
+        <div class="ficha-copy" style="display: none">
+            <button style="margin-bottom: 1%; margin-left: auto; margin-right: 2%" type="button" class="btn btn-danger btn-sm ficha-close shadow">
+          Fechar &#10060;
+        </button>
+            <textarea id="ficha-copy" disabled> </textarea>
+        </div>
+        <div class="ficha-container" style="display: none">
+            <form class="ficha-form">
+                <h1 class="ficha-title">Ficha Criminal</h1>
+                <button type="button" class="btn btn-danger btn-sm ficha-form-close shadow">
+            Fechar &#10060;
+          </button>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Ronaldinho Gaucho" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="idade">Idade</label>
+                        <input type="text" class="form-control" id="idade" placeholder="27" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="pass">Passaporte</label>
+                        <input type="text" class="form-control" id="pass" placeholder="7000" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="id">RG</label>
+                        <input type="text" class="form-control" id="id" placeholder="45TG67U" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="ficha-tempo">Tempo De Pena</label>
+                        <input type="text" class="form-control" id="ficha-tempo" disabled />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="ficha-multa">Multa</label>
+                        <input type="text" class="form-control" id="ficha-multa" disabled />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="ficha-pendentes">Multas Pendentes</label>
+                        <input type="text" class="form-control" id="ficha-pendentes" disabled />
+                    </div>
+                </div>
+                <label for="">Guarnição</label>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="pm" value="@Polícia Militar :regional_indicator_p: :regional_indicator_m: :oncoming_police_car:" />
+                            <label style="color: rgb(2, 2, 228)" for="pm">Polícia Militar (PMERJ)</label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="pc"
+                  value="@Polícia Civil :regional_indicator_p: :regional_indicator_c:"
+                />
+                <label style="color: rgb(92, 92, 92)" for="pc"
+                  >Polícia Cívil (PC)</label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="pf"
+                  value="@Polícia Federal :regional_indicator_p: :regional_indicator_f:"
+                />
+                <label style="color: rgb(221, 89, 1)" for="pf"
+                  >Polícia Federal (PF)</label
+                >
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="prf"
+                  value="@Polícia Rodoviária :regional_indicator_p: :regional_indicator_r: :regional_indicator_f:"
+                />
+                <label style="color: rgb(255, 251, 23)" for="prf"
+                  >Polícia Rodoviaria Federal (PRF)</label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="bope"
+                  value="@BOPE :BOPE:"
+                />
+                <label for="bope">BOPE</label>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-between">
+                    <p id="g-error" style="color: red; display: none">
+                        Selecione Uma Guarnição
+                    </p>
+                    <p id="i-error" style="color: red; display: none">
+                        Existem Campos Vazios!
+                    </p>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="width: 100%">
+                        <label for="motivo">Motivo</label>
+                        <textarea class="form-control" id="motivo" rows="5" disabled></textarea>
+                    </div>
+                </div>
+                <button type="button" id="btn-ficha" class="btn btn-primary">
+            Criar Ficha
+          </button>
+            </form>
+        </div>
+        <div class="credits shadow" style="display: none">
+            <button type="button" class="btn btn-danger btn-sm cred-close shadow">
+          Fechar &#10060;
+        </button>
+            <h1 class="credit-title">CREDITOS</h1>
+            <p class="credit-text">
+                &nbsp;&nbsp;&nbsp;&nbsp;Gostaria de conceder todas as honrarias aos envolvidos no projeto da Calculadora Penal do UniverseRP.<br /> &nbsp;&nbsp;&nbsp;E uma felicitação especial a todos os oficiais da lei que diariamente arriscam suas vidas
+                em prol de uma cidade mais segura e próspera.<br /> Em nome do <span class="cred-title">UniverseRP</span>: Parabéns, senhoras e senhores.<br />
+                <br />
+            </p>
+
+            <div class="sc">
+                <span class="cred-title">Créditos Especiais :</span> <br /> Maverick | 7000 <br /> Jean Tristinho | 6997 <br /> Frederic | 6999 <br /> John | 100 <br /> BeNe
+            </div>
+        </div>
+        <div class="container">
+            <div class="panel shadow">
+                <div class="fc">Ficha</div>
+                <div class="main-form">
+                    <button type="button" class="btn btn-dark logo shadow"></button>
+                    <button type="button" class="btn btn-info btn-sm clean shadow">
+              Limpar &#128465;&#65039;
+            </button>
+                    <div class="multas-pendentes">
+                        <label for="multas-pendentes">Multas Pendentes</label>
+                        <div class="input-group i-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupPrepend2">$</span
+                  >
+                </div>
+                <input
+                  type="text"
+                  class="form-control mp-input"
+                  id="multas-pendentes"
+                  placeholder="EX : 1,000"
+                />
+              </div>
+            </div>
+            <h1 class="main-title">Codigo Penal</h1>
+            <button
+              type="button"
+              style="color: white !important"
+              class="btn btn-warning btn-sm info shadow"
+            >
+              Observações &#9888;&#65039;
+            </button>
+            <div
+              class="obs-container"
+              style="width: 65%; right: 18%; display: none"
+            >
+              <button
+                type="button"
+                class="btn btn-danger btn-sm obs-close shadow"
+              >
+                Fechar &#10060;
+              </button>
+              <h1 class="credit-title">Observações</h1>
+              <p class="obs">
+                <strong>REINCIDÊNCIA EM CRIME:</strong> Cada passagem por algum
+                crime sua pena será aumentada de 10 em 10%. Ex.: foi preso pela
+                3 vezes, sua pena será aumentada em 30%;<br />
+                <strong>FIANÇA:</strong> Será estipulado pelo delegado ou
+                delegado adjunto de plantão, levando em conta os crimes
+                cometidos e sua gravidade;<br />
+                <strong>PENA MÁXIMA:</strong> 500 meses. R$ 600.000,00 de
+                multa;<br />
+                <strong>RÉU PRIMÁRIO:</strong> Redução de 50% da pena;<br />
+                <strong>CRIMES HEDIONDOS:</strong> Não tem direito a fiança;<br />
+                <strong>Tráfico de drogas:</strong> a partir de 3 unidades;<br />
+                <strong>Tráfico de aço:</strong> a partir de 11 unidades;<br />
+                <strong>CÚMPLICE:</strong> de qualquer crime pegara metade da
+                pena;<br />
+                A cada 1.000 de multas pendentes será 1 ano a mais em sua pena;
+              </p>
+            </div>
+            <ul class="nav nav-tabs tab-container" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a
+                  class="nav-link active"
+                  id="home-tab"
+                  data-toggle="tab"
+                  href="#home"
+                  role="tab"
+                  aria-controls="home"
+                  aria-selected="true"
+                  >&#128664; Artigos de Transito</a
+                >
+              </li>
+              <li class="nav-item" role="presentation">
+                <a
+                  class="nav-link"
+                  id="profile-tab"
+                  data-toggle="tab"
+                  href="#profile"
+                  role="tab"
+                  aria-controls="profile"
+                  aria-selected="false"
+                  >&#128994; Crimes Leves</a
+                >
+              </li>
+              <li class="nav-item" role="presentation">
+                <a
+                  class="nav-link"
+                  id="contact-tab"
+                  data-toggle="tab"
+                  href="#contact"
+                  role="tab"
+                  aria-controls="contact"
+                  aria-selected="false"
+                  >&#128993; Crimes Graves</a
+                >
+              </li>
+              <li class="nav-item" role="presentation">
+                <a
+                  class="nav-link"
+                  id="roubo-tab"
+                  data-toggle="tab"
+                  href="#roubo"
+                  role="tab"
+                  aria-controls="roubo"
+                  aria-selected="false"
+                  >&#128373;&#65039; Artigos de Roubo e Furto</a
+                >
+              </li>
+              <li class="nav-item" role="presentation">
+                <a
+                  class="nav-link"
+                  id="hedi-tab"
+                  data-toggle="tab"
+                  href="#hedi"
+                  role="tab"
+                  aria-controls="hedi"
+                  aria-selected="false"
+                  >&#128420; Crimes contra a vida</a
+                >
+              </li>
+              <li class="nav-item" role="presentation">
+                <a
+                  class="nav-link"
+                  id="porte-tab"
+                  data-toggle="tab"
+                  href="#porte"
+                  role="tab"
+                  aria-controls="porte"
+                  aria-selected="false"
+                  >&#128299; Artigos de posse/porte ilegal
+                </a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a
+                  class="nav-link"
+                  id="trafico-tab"
+                  data-toggle="tab"
+                  href="#trafico"
+                  role="tab"
+                  aria-controls="trafico"
+                  aria-selected="false"
+                  >&#128138; Artigos de Tráfico</a
+                >
+              </li>
+            </ul>
+            <div class="scroll">
+              <div class="tab-content" id="myTabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="home"
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                >
+                  <table
+                    class="table table-striped table-dark table-config table-hover"
+                  >
+                    <thead class="">
+                      <tr>
+                        <th scope="col">Crime</th>
+                        <th scope="col">Multa</th>
+                        <th scope="col">Meses</th>
+                        <th scope="col">&#10004;&#65039;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act1">Atropelamento</label>
+                        </td>
+                        <td>$20.000</td>
+                        <td>Apreensão do Veículo</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act1"
+                            multa="20000"
+                            anos="2"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act2">Dirigir embriagado</label>
+                        </td>
+                        <td>$30.000</td>
+                        <td>Apreensão do Veículo</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act2"
+                            multa="30000"
+                            anos="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act3">Estacionar em local proibido</label>
+                        </td>
+                        <td>$10.000</td>
+                        <td>Sujeito a Guincho</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act3"
+                            multa="10000"
+                            anos="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act4">Pelicula de vidro G5</label>
+                        </td>
+                        <td>$10.000</td>
+                        <td>0</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act4"
+                            multa="10000"
+                            anos="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act5">Poluição sonora</label>
+                        </td>
+                        <td>$10.000</td>
+                        <td>0</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act5"
+                            multa="10000"
+                            anos="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act6">Conduzir sem CNH</label>
+                        </td>
+                        <td>$15.000</td>
+                        <td>Apreensão do Veículo</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act6"
+                            multa="15000"
+                            anos="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label id="semaforo-label" for="act7"
+                            >Avançar semáforo vermelho</label
+                          >
+                        </td>
+                        <td>$5.000</td>
+                        <td>0</td>
+                        <td>
+                          <input
+                            type="text"
+                            class="form-control qty"
+                            id="qty-semaforo"
+                            placeholder="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act8"
+                            >Ultrapassar em faixa continua</label
+                          >
+                        </td>
+                        <td>$10.000</td>
+                        <td>0</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act8"
+                            multa="10000"
+                            anos="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act9">Cruzamento Proibido</label>
+                        </td>
+                        <td>$10.000</td>
+                        <td>0</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act9"
+                            multa="10000"
+                            anos="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act10">Direção perigosa</label>
+                        </td>
+                        <td>$20.000</td>
+                        <td>Apreensão do Veículo</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act10"
+                            multa="20000"
+                            anos="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act11">Dirigir com farois apagados</label>
+                        </td>
+                        <td>$10.000</td>
+                        <td>8</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act11"
+                            multa="10000"
+                            anos="8"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act12"
+                            >Dirigir com veículo em más condições</label
+                          >
+                        </td>
+                        <td>$10.000</td>
+                        <td>0</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act12"
+                            multa="10000"
+                            anos="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act13">Corrida Ilegal</label>
+                        </td>
+                        <td>$20.000</td>
+                        <td>Apreensão do Veículo</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act13"
+                            multa="20000"
+                            anos="0"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="profile"
+                  role="tabpanel"
+                  aria-labelledby="profile-tab"
+                >
+                  <table
+                    class="table table-striped table-dark table-config table-hover"
+                  >
+                    <thead class="">
+                      <tr>
+                        <th scope="col">Crime</th>
+                        <th scope="col">Multa</th>
+                        <th scope="col">Meses</th>
+                        <th scope="col">&#10004;&#65039;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act14">Calúnia</label>
+                        </td>
+                        <td>$20.000</td>
+                        <td>0</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act14"
+                            multa="20000"
+                            anos="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act15">Difamação</label>
+                        </td>
+                        <td>$20.000</td>
+                        <td>0</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act15"
+                            multa="20000"
+                            anos="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act16">Trote</label>
+                        </td>
+                        <td>$20.000</td>
+                        <td>0</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act16"
+                            multa="20000"
+                            anos="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act17">Vandalismo</label>
+                        </td>
+                        <td>$10.000</td>
+                        <td>10</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act17"
+                            multa="10000"
+                            anos="10"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act18">Dano ao patrimônio alheio</label>
+                        </td>
+                        <td>$20.000 + Reembolso</td>
+                        <td>0</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act18"
+                            multa="20000"
+                            anos="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act19">Uso de Máscara</label>
+                        </td>
+                        <td>$30.000</td>
+                        <td>0</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act19"
+                            multa="30000"
+                            anos="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act20">Resistência à prisão</label>
+                        </td>
+                        <td>$20.000</td>
+                        <td>10</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act20"
+                            multa="20000"
+                            anos="10"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act21">Tentativa de fuga</label>
+                        </td>
+                        <td>$10.000</td>
+                        <td>10</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act21"
+                            multa="10000"
+                            anos="10"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="contact"
+                  role="tabpanel"
+                  aria-labelledby="contact-tab"
+                >
+                  <table
+                    class="table table-striped table-dark table-config table-hover"
+                  >
+                    <thead class="">
+                      <tr>
+                        <th scope="col">Crime</th>
+                        <th scope="col">Multa</th>
+                        <th scope="col">Meses</th>
+                        <th scope="col">&#10004;&#65039;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act22">Ameaça</label>
+                        </td>
+                        <td>$20.000</td>
+                        <td>15</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act22"
+                            multa="20000"
+                            anos="15"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act23">Lesão corporal</label>
+                        </td>
+                        <td>$30.000</td>
+                        <td>15</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act23"
+                            multa="30000"
+                            anos="15"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label id="desacato-label" for="act24"
+                            >Desacato a servidor público</label
+                          >
+                        </td>
+                        <td>$20.000</td>
+                        <td>15</td>
+                        <td>
+                          <input
+                            type="text"
+                            class="form-control qty"
+                            id="qty-desacato"
+                            placeholder="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label id="desobediencia-label" for="act25"
+                            >Desobediência à ordem policial</label
+                          >
+                        </td>
+                        <td>$20.000</td>
+                        <td>15</td>
+                        <td>
+                          <input
+                            type="text"
+                            class="form-control qty"
+                            id="qty-desobediencia"
+                            placeholder="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act26">Tentativa de suborno</label>
+                        </td>
+                        <td>$10.000</td>
+                        <td>15</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act26"
+                            multa="10000"
+                            anos="15"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act27">Falso testemunho</label>
+                        </td>
+                        <td>$20.000</td>
+                        <td>15</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act27"
+                            multa="20000"
+                            anos="15"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act28">Falsidade ideológica</label>
+                        </td>
+                        <td>$20.000</td>
+                        <td>15</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act28"
+                            multa="20000"
+                            anos="15"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act29">Obstrução à justiça</label>
+                        </td>
+                        <td>$20.000</td>
+                        <td>15</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act29"
+                            multa="20000"
+                            anos="15"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act30">Omissão de socorro</label>
+                        </td>
+                        <td>$20.000</td>
+                        <td>15</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act30"
+                            multa="20000"
+                            anos="15"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act31">Organização criminosa</label>
+                        </td>
+                        <td>$40.000</td>
+                        <td>40</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act31"
+                            multa="40000"
+                            anos="40"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act32">Sequestro</label>
+                        </td>
+                        <td>$30.000</td>
+                        <td>30</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act32"
+                            multa="30000"
+                            anos="30"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act33">Lavagem de dinheiro</label>
+                        </td>
+                        <td>$50.000</td>
+                        <td>50</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act33"
+                            multa="50000"
+                            anos="50"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="roubo"
+                  role="tabpanel"
+                  aria-labelledby="roubo-tab"
+                >
+                  <table
+                    class="table table-striped table-dark table-config table-hover"
+                  >
+                    <thead class="">
+                      <tr>
+                        <th scope="col">Crime</th>
+                        <th scope="col">Multa</th>
+                        <th scope="col">Meses</th>
+                        <th scope="col">&#10004;&#65039;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act34">Assalto ao Banco Central</label>
+                        </td>
+                        <td>$250.000</td>
+                        <td>180</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act34"
+                            multa="250000"
+                            anos="180"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act35">Assalto à Joalheria</label>
+                        </td>
+                        <td>$160.000</td>
+                        <td>170</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act35"
+                            multa="160000"
+                            anos="170"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act36">Assalto ao banco de Palleto</label>
+                        </td>
+                        <td>$160.000</td>
+                        <td>170</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act36"
+                            multa="160000"
+                            anos="170"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act37">Assalto à Loja</label>
+                        </td>
+                        <td>$35.000</td>
+                        <td>30</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act37"
+                            multa="35000"
+                            anos="30"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act38">Assalto à Ammunation</label>
+                        </td>
+                        <td>$55.000</td>
+                        <td>35</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act38"
+                            multa="55000"
+                            anos="35"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act001">Assalto à Vanilla</label>
+                        </td>
+                        <td>$90.000</td>
+                        <td>40</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act001"
+                            multa="90000"
+                            anos="40"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act002">Assalto à Yellow Jack</label>
+                        </td>
+                        <td>$60.000</td>
+                        <td>34</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act002"
+                            multa="60000"
+                            anos="34"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act003">Assalto à Galinheiro</label>
+                        </td>
+                        <td>$100.000</td>
+                        <td>45</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act003"
+                            multa="100000"
+                            anos="45"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act004">Assalto à Nióbio</label>
+                        </td>
+                        <td>$150.000</td>
+                        <td>60</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act004"
+                            multa="150000"
+                            anos="60"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act39"
+                            >Assalto à caixa eletrônico / ATM</label
+                          >
+                        </td>
+                        <td>$10.000</td>
+                        <td>10</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act39"
+                            multa="10000"
+                            anos="10"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act40">Roubo / Furto de veículo</label>
+                        </td>
+                        <td>$20.000</td>
+                        <td>20</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act40"
+                            multa="20000"
+                            anos="20"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act41">Roubo a cívil</label>
+                        </td>
+                        <td>$12.000</td>
+                        <td>12</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act41"
+                            multa="12000"
+                            anos="12"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act42">Estelionato</label>
+                        </td>
+                        <td>$24.000</td>
+                        <td>12</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act42"
+                            multa="24000"
+                            anos="12"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act43">Extorsão</label>
+                        </td>
+                        <td>$24.000</td>
+                        <td>12</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act43"
+                            multa="24000"
+                            anos="12"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="hedi"
+                  role="tabpanel"
+                  aria-labelledby="hedi-tab"
+                >
+                  <table
+                    class="table table-striped table-dark table-config table-hover"
+                  >
+                    <thead class="">
+                      <tr>
+                        <th scope="col">Crime</th>
+                        <th scope="col">Multa</th>
+                        <th scope="col">Meses</th>
+                        <th scope="col">&#10004;&#65039;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act45">Tentativa de homicidio</label>
+                        </td>
+                        <td>$16.000</td>
+                        <td>16</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act45"
+                            multa="16000"
+                            anos="16"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act47">Homicidio doloso</label>
+                        </td>
+                        <td>$32.000</td>
+                        <td>32</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act47"
+                            multa="32000"
+                            anos="32"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act46">Homicidio culposo</label>
+                        </td>
+                        <td>$16.000</td>
+                        <td>16</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act46"
+                            multa="16000"
+                            anos="16"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label
+                            id="homicidio-militar-label"
+                            for="qty-homicidio-militar"
+                            >Homicidio Doloso de Servidor</label
+                          >
+                        </td>
+                        <td>$48.000</td>
+                        <td>48</td>
+                        <td class="qty-td">
+                          <input
+                            type="text"
+                            class="form-control qty"
+                            id="qty-homicidio-militar"
+                            placeholder="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label
+                            id="t-homicidio-civil-label"
+                            for="qty-t-homicidio-civil"
+                            >Tentativa De Homicidio a Servidor</label
+                          >
+                        </td>
+                        <td>$24.000</td>
+                        <td>24</td>
+                        <td class="qty-td">
+                          <input
+                            type="text"
+                            class="form-control qty"
+                            id="qty-t-homicidio-civil"
+                            placeholder="0"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="porte"
+                  role="tabpanel"
+                  aria-labelledby="porte-tab"
+                >
+                  <table
+                    class="table table-striped table-dark table-config table-hover"
+                  >
+                    <thead class="">
+                      <tr>
+                        <th scope="col">Crime</th>
+                        <th scope="col">Multa</th>
+                        <th scope="col">Meses</th>
+                        <th scope="col">&#10004;&#65039;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="ftd">
+                          <label id="sujo-label" for="qty-sujo"
+                            >Dinheiro Sujo</label
+                          >
+                        </td>
+                        <td>$1000 a cada 1000 unidades</td>
+                        <td>1 mês a cada 1000 unidades</td>
+                        <td class="qty-td">
+                          <input
+                            type="text"
+                            class="form-control qty"
+                            id="qty-sujo"
+                            placeholder="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="branca-label" for="qty-branca"
+                          >Arma Branca</label>
+                        </td>
+                        <td>$5.000 a cada unidade</td>
+                        <td>0</td>
+                        <td class="qty-td">
+                          <input
+                            type="text"
+                            class="form-control qty"
+                            id="qty-branca"
+                            placeholder="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act50">Porte ilegal de arma leve</label>
+                        </td>
+                        <td>$20.000</td>
+                        <td>15</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act50"
+                            multa="20000"
+                            anos="15"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act51">Porte ilegal de arma média</label>
+                        </td>
+                        <td>$24.000</td>
+                        <td>18</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act51"
+                            multa="24000"
+                            anos="18"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act52">Porte ilegal de arma pesada</label>
+                        </td>
+                        <td>$30.000</td>
+                        <td>26</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act52"
+                            multa="30000"
+                            anos="26"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act53">Material explosivo</label>
+                        </td>
+                        <td>$24.000</td>
+                        <td>24</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act53"
+                            multa="24000"
+                            anos="24"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label for="act54">Posse de colete balístico</label>
+                        </td>
+                        <td>$16.000</td>
+                        <td>15</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id="act54"
+                            multa="16000"
+                            anos="15"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="trafico"
+                  role="tabpanel"
+                  aria-labelledby="trafico-tab"
+                >
+                  <table
+                    class="table table-striped table-dark table-config table-hover"
+                  >
+                    <thead class="">
+                      <tr>
+                        <th scope="col">Crime</th>
+                        <th scope="col">Multa</th>
+                        <th scope="col">Meses</th>
+                        <th scope="col">&#10004;&#65039;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="ftd">
+                          <label id="drogas-label" for="qty-drogas"
+                            >Drogas</label
+                          >
+                        </td>
+                        <td>$100 por unidade</td>
+                        <td>1 mês a cada unidade</td>
+                        <td class="qty-td">
+                          <input
+                            type="text"
+                            class="form-control qty"
+                            id="qty-drogas"
+                            placeholder="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label id="aco-label" for="qty-aco"
+                            >Tráfico de Aço</label
+                          >
+                        </td>
+                        <td>$100 por unidade</td>
+                        <td>1 mês por unidade</td>
+                        <td class="qty-td">
+                          <input
+                            type="text"
+                            class="form-control qty"
+                            id="qty-aco"
+                            placeholder="0"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ftd">
+                          <label id="muni-label" for="qty-muni">Munições</label>
+                        </td>
+                        <td>$1 por unidade</td>
+                        <td>1 mês por unidade</td>
+                        <td class="qty-td">
+                          <input
+                            type="text"
+                            class="form-control qty"
+                            id="qty-muni"
+                            placeholder="0"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="total-container">
+              <div class="primario">
+                <label for="primario">Réu Primário?</label>
+                <input type="checkbox" id="primario" />
+              </div>
+              <span
+                >Total Multas &#128181; <span id="total-multas">$ 0</span></span>
+                                <span>Total Meses &#9201;&#65039;
+                <span id="total-anos"> 0</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="./dev.js"></script>
+            <!-- <script src="./listener.js" type="text/javascript"></script> -->
+</body>
+
+</html>
