@@ -1,0 +1,395 @@
+body {
+  background-color: transparent;
+}
+
+.main-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat";
+  background-color: transparent;
+}
+
+.container {
+  width: 100%;
+  height: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-image: url("../images/bg.jpg");
+  border-radius: 35px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: auto;
+  padding: 0;
+}
+
+.panel {
+  width: 95%;
+  height: 95%;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 35px;
+}
+
+.scroll {
+  height: 75%;
+  overflow-y: auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(3, 3, 212);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(2, 2, 153);
+}
+
+.main-form {
+  height: 100%;
+  text-align: center;
+  padding: 2.5%;
+  position: relative;
+}
+
+.form-container {
+  text-align: left;
+}
+
+.form-elements {
+  text-align: left;
+}
+
+.tab-content {
+  padding: 1%;
+}
+
+.table-config {
+  text-align: center;
+}
+
+.ftd {
+  text-align: left;
+}
+
+.main-title {
+  font-weight: bold;
+  margin-bottom: 2%;
+  font-size: 2.5rem;
+  font-family: "Cinzel Decorative";
+  text-decoration: underline;
+}
+
+#total-multas,
+#total-anos {
+  color: black;
+  font-family: "Black Ops One";
+}
+
+#total-multas {
+  color: rgb(2, 77, 2);
+}
+
+#total-anos {
+  color: rgb(116, 3, 3);
+}
+
+.total-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  font-family: "Cinzel Decorative";
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 1.5%;
+}
+
+.clean {
+  position: absolute;
+  right: 2%;
+  top: 3%;
+}
+
+.cred-close,
+.obs-close {
+  position: absolute;
+  right: 3%;
+  top: 5%;
+}
+
+.nav-link {
+  color: rgb(3, 3, 212);
+  font-weight: 700;
+  font-size: 0.8rem;
+
+  text-align: center;
+}
+
+.logo {
+  background-image: url("../images/universe-logo.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  border-radius: 20%;
+  top: 0%;
+  left: 3%;
+  width: 6%;
+  height: 8%;
+}
+
+.tab-container {
+  overflow-y: hidden;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+
+.credits,
+.obs-container,
+.ficha-container,
+.ficha-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 35px;
+  position: absolute;
+  width: 40%;
+  height: 55%;
+  z-index: 1;
+  font-family: "Montserrat";
+  font-weight: 500;
+  top: 25%;
+  right: 32%;
+}
+
+.credit-text,
+.obs {
+  padding: 5%;
+  text-align: justify;
+  line-height: 1.5rem;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.cred-title {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.sc {
+  text-align: center;
+  line-height: 1.5rem;
+  font-family: "Cinzel Decorative";
+  font-weight: 600;
+}
+
+.credit-title {
+  text-align: center;
+  font-family: "Cinzel Decorative";
+  font-weight: bold;
+  font-size: 2rem;
+  text-decoration: underline;
+}
+
+.multas-pendentes {
+  width: 17%;
+  position: absolute;
+  left: 13.5%;
+  top: 2.5%;
+  font-size: 0.8rem;
+  font-family: "Cinzel Decorative";
+}
+
+.multas-pendentes label,
+span {
+  font-weight: 600;
+}
+
+.mp-input,
+.mp-input:focus {
+  text-align: center;
+  margin: auto;
+  font-family: "Black Ops One";
+  color: rgb(2, 77, 2);
+}
+
+.i-group {
+  width: 100%;
+}
+
+#inputGroupPrepend2 {
+  font-family: "Montserrat";
+}
+
+.info {
+  position: absolute;
+  right: 15%;
+  top: 3%;
+  color: white;
+}
+
+.qty {
+  width: 30%;
+  height: 2.2vh;
+  margin: auto;
+  text-align: center;
+}
+
+.fc {
+  width: 8%;
+  height: 3.5%;
+  transform: rotate(270deg);
+  position: relative;
+  left: -2%;
+  top: 50%;
+  background-color: #ffc107;
+  text-align: center;
+  border-radius: 35px 35px 0 0;
+  padding: 0.55%;
+  color: white;
+  z-index: 1;
+  transition: all 0.2s ease-in-out;
+}
+
+.fc:hover {
+  background-color: red;
+  cursor: pointer;
+  transform: translateX(-0.28rem) scaleX(1.3) rotate(270deg);
+  background-color: #dda704;
+}
+
+.ficha-form {
+  padding: 5% 10%;
+  background-color: #cccccc;
+  border-radius: 35px;
+}
+
+.ficha-copy {
+  padding: 1%;
+}
+
+.ficha-form-close {
+  position: relative;
+  left: 85%;
+}
+
+#ficha-copy {
+  width: 95%;
+  height: 95%;
+  border-radius: 35px;
+  padding: 5%;
+  background-color: #cccccc;
+}
+
+textarea {
+  resize: none;
+}
+
+.form-row {
+  margin-top: 1%;
+}
+
+.form-check {
+  font-size: 0.8rem;
+  margin-bottom: 10%;
+  display: flex;
+  height: 10% !important;
+  align-items: center;
+  font-weight: bold;
+}
+
+.ficha-container {
+  top: 15%;
+  height: 70%;
+  right: 30% !important;
+}
+
+td label {
+  width: 100%;
+}
+
+.ficha-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Cinzel Decorative";
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 1024px) {
+  .fc {
+    left: -1.9%;
+  }
+
+  .fc:hover {
+    transform: translateX(-0.2rem) scaleX(1.3) rotate(270deg);
+  }
+
+  .multas-pendentes {
+    top: 1%;
+    left: 11%;
+  }
+
+  .info,
+  .clean {
+    top: 1.5%;
+  }
+
+  .logo {
+    top: 0%;
+  }
+
+  .credits {
+    width: 50%;
+    right: 25%;
+  }
+}
+
+@media only screen and (max-width: 1366px) {
+  .fc {
+    left: -1.6%;
+  }
+
+  .fc:hover {
+    transform: translateX(-0.18rem) scaleX(1.3) rotate(270deg);
+  }
+
+  .logo {
+    top: 3%;
+  }
+
+  .credits {
+    width: 50%;
+    right: 25%;
+  }
+
+  .ficha-container {
+    height: 85%;
+    top: 10%;
+    width: 45%;
+  }
+}
